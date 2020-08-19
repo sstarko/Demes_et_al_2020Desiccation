@@ -8,7 +8,7 @@
 setwd("./")
 
 #Read in data file
-x<-read.csv(file="Desiccation_data6.csv")
+x<-read.csv(file="Desiccation_data_Aug2020_R2.csv")
 
 #Change columns to numeric where appropriate
 x$Drying.time<-as.numeric(x$Drying.time)
@@ -379,6 +379,8 @@ RWC_profile<-ggplot(profiles, aes(x=Drying.time, y=RWC, colour=Habitat)) +
 #View plot
 RWC_profile
 
+#Figure exported to PDF as 5 x 7 image
+
 ##############################################################################################################
 ##############################################################################################################
 ##############################################################################################################
@@ -424,7 +426,7 @@ force_fig<- ggplot(figure3.data, aes(x=RWC, y=break.force.mean, colour=Habitat))
   facet_wrap(~Clade, scale="free")
 
 force_fig
-
+#Export pdf at 7.5 x 10.5
 
 ########################################
 ########################################
@@ -447,6 +449,10 @@ ext_fig<- ggplot(figure3.data, aes(x=RWC, y=ext.mean, colour=Habitat)) +
   theme(legend.text=element_text(size=14))+
   facet_wrap(~Clade, scale="free")
 
+
+ext_fig
+#Export pdf at 7.5 x 10.5
+
 #####################################################
 #####################################################
 #############SUPPLEMENTARY FIGURE ###################
@@ -468,6 +474,9 @@ stress_fig<- ggplot(figure3.data, aes(x=RWC, y=strength.mean, colour=Habitat)) +
   theme(legend.text=element_text(size=14))+
   facet_wrap(~Clade, scale="free")
 
+
+stress_fig
+#Export pdf at 7.5 x 10.5
 #####################################################
 #####################################################
 #############SUPPLEMENTARY FIGURE ###################
@@ -488,6 +497,8 @@ stiff_fig<- ggplot(figure3.data, aes(x=RWC, y=mod.mean, colour=Habitat)) +
   theme(legend.position = c(0.8, 0.2))+
   theme(legend.text=element_text(size=14))+
   facet_wrap(~Clade, scale="free")
+
+stiff_fig
 
 ##############################################################################################################
 ##############################################################################################################
