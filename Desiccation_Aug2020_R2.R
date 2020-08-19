@@ -619,8 +619,9 @@ WeightCompare<-rbind(WetWeight, DryWeight)
 
 WeightCompare %>% str()
 
+#Make ggplot object with wet = 1, dry = 0
 Weight_fig<- ggplot(WeightCompare, aes(x=Treatment, y=Mean.weight, colour=Habitat)) + 
-  geom_pointrange(aes(ymin=Mean.weight-se, ymax=Mean.weight+se), size=0.2) +
+  geom_pointrange(aes(ymin=Mean.weight-se, ymax=Mean.weight+se), size=1) +
   geom_line(size=3) +
   geom_point(size=5)+
   scale_colour_grey()+
@@ -632,8 +633,9 @@ Weight_fig<- ggplot(WeightCompare, aes(x=Treatment, y=Mean.weight, colour=Habita
   theme(strip.text.x = element_text(size = 16))+
   theme(legend.position = c(0.8, 0.2))+
   theme(legend.text=element_text(size=14))+
-  facet_wrap(~Clade, scale="free")
+  facet_wrap(~Clade, scale="free")+expand_limits(y = 0)
 
+#View plot
 Weight_fig
 
 
