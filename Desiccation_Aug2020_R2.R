@@ -278,6 +278,12 @@ AICc(zforce_3)
 AICc(zforce_4)
 AICc(zforce_5)
 
+##Try model without Fucales included
+main_noFuc<-subset(main1, Clade != "Fucales")
+
+lme(Force_per_width ~ Habitat*Treatment  , random = ~ 1|Clade, data = main_noFuc) %>% lsmeans(pairwise~Habitat*Treatment, adjust="tukey")
+#Effect of habitat in "wet" tissues becomes strongly significant when Fucales excluded
+
 #Model with differences based on habitat and treatment highly supported
 
 ##Extensibility
@@ -396,6 +402,7 @@ ext<-summarySE(main1, measurevar="Extensibility", groupvars=c("Clade", "RWC", "H
 mod<-summarySE(main1, measurevar="Modulus", groupvars=c("Clade","RWC","Habitat", "Species", "Treatment"))
 strength<-summarySE(main1, measurevar="Strength", groupvars=c("Clade","RWC","Habitat","Species", "Treatment"))
 break.force<-summarySE(main1, measurevar="Force_per_width", groupvars=c("Clade","RWC","Habitat", "Species", "Treatment"))
+thickness<-summarySE(main1, measurevar="Thickness_mm", groupvars=c("Clade","RWC","Habitat", "Species", "Treatment"))
 
 #Make a dataframe with summary of means and SE
 figure3.data<- data.frame(Clade= ext$Clade, Habitat= ext$Habitat, Species= ext$Species, RWC= ext$RWC, Treatment=ext$Treatment, 
